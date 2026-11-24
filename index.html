@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B1220">
+<title>NEXUI | Premium Navbar</title>
+
+<style>
+/* ===== RESET & COLORS ===== */
+:root {
+    --bg: #0B1220;
+    --surface: #111C2F;
+    --surface-hover: #1A2940;
+    --blue: #3B82F6;
+    --cyan: #22D3EE;
+    --white: #F8FAFC;
+    --muted: #94A3B8;
+    --border: #293950;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--white);
+    background:
+        radial-gradient(ellipse at top, #172A46 0%, transparent 55%),
+        var(--bg);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 16px 5%;
+    background: rgba(11, 18, 32, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    box-shadow: 0 5px 20px #3B82F625;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo-text span {
+    color: var(--cyan);
+}
+
+/* ===== NAVIGATION LINKS ===== */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    display: block;
+    padding: 11px 14px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 9px;
+    transition: color .25s ease, background .25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--cyan);
+    background: #22D3EE0D;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 14px;
+    width: 0;
+    height: 2px;
+    border-radius: 5px;
+    background: var(--cyan);
+    transition: width .25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: calc(100% - 28px);
+}
+
+/* ===== CTA BUTTON ===== */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cta-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 18px;
+    border: 1px solid #60A5FA;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #3B82F640;
+}
+
+.cta-button span {
+    font-size: 17px;
+}
+
+/* ===== MOBILE TOGGLE ===== */
+.menu-toggle {
+    display: none;
+    width: 43px;
+    height: 43px;
+    color: var(--cyan);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.menu-toggle:hover {
+    background: var(--surface-hover);
+}
+
+/* ===== DEMO HERO ===== */
+.hero {
+    max-width: 1100px;
+    min-height: 75vh;
+    padding: 100px 24px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn .7s ease both;
+}
+
+.eyebrow {
+    padding: 9px 15px;
+    border: 1px solid #245065;
+    border-radius: 30px;
+    background: #102B3A;
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    max-width: 850px;
+    font-size: clamp(38px, 6vw, 70px);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
+.hero p {
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 14px 22px;
+    color: white;
+    background: var(--blue);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.hero-button:hover {
+    background: var(--cyan);
+    color: #082032;
+    transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE NAVBAR ===== */
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 13px 4%;
+    }
+
+    .nav-container {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .cta-button {
+        padding: 11px 13px;
+    }
+}
+
+@media (max-width: 780px) {
+    .menu-toggle {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+
+    .nav-actions .cta-button {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        animation: fadeIn .2s ease;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 13px;
+        font-size: 14px;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links .mobile-cta {
+        display: block;
+        margin-top: 5px;
+        color: white;
+        text-align: center;
+        background: linear-gradient(135deg, var(--blue), #2563EB);
+    }
+
+    .hero {
+        min-height: 70vh;
+        padding: 75px 20px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+}
+
+@media (min-width: 781px) {
+    .nav-links {
+        display: flex !important;
+    }
+
+    .nav-links .mobile-cta {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+    <nav class="nav-container" aria-label="Main navigation">
+
+        <a href="#home" class="logo" aria-label="NEXUI home">
+            <span class="logo-icon">N</span>
+            <span class="logo-text">NAV<span>BAR</span></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" class="mobile-cta">Let's Talk ↗</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#contact" class="cta-button">
+                Let's Talk <span>↗</span>
+            </a>
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >☰</button>
+        </div>
+
+    </nav>
+</header>
+
+<!-- ===== DEMO CONTENT ===== -->
+<main>
+    <section class="hero" id="home">
+        <div class="eyebrow">✦ NEXT-GENERATION DIGITAL DESIGN</div>
+
+        <h1>
+            Build Something
+            <span>Extraordinary.</span>
+        </h1>
+
+        <p>
+            Modern design, powerful technology and seamless digital
+            experiences — crafted for brands ready to move forward.
+        </p>
+
+        <a href="#services" class="hero-button">
+            Explore Our Services ↗
+        </a>
+    </section>
+
+    <section id="services" style="padding:40px 20px;text-align:center">
+        <h2>Our Services</h2>
+        <p style="color:#94A3B8;margin-top:12px">
+            Modern web design · Development · Digital solutions
+        </p>
+    </section>
+
+    <section id="projects" style="padding:40px 20px;text-align:center">
+        <h2>Featured Projects</h2>
+    </section>
+
+    <section id="about" style="padding:40px 20px;text-align:center">
+        <h2>About Us</h2>
+    </section>
+
+    <section id="contact" style="padding:40px 20px;text-align:center">
+        <h2>Let's Build Something Together</h2>
+        <p style="color:#94A3B8;margin-top:12px">
+            Get in touch to discuss your next project.
+        </p>
+    </section>
+</main>
+
+<script>
+"use strict";
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const links = navLinks.querySelectorAll("a");
+
+// Open and close mobile navigation
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+});
+
+// Close the mobile menu after selecting a link
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// Highlight the selected navigation link
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        links.forEach(item => item.classList.remove("active"));
+
+        if (!link.classList.contains("mobile-cta")) {
+            link.classList.add("active");
+        } else {
+            const homeLink = navLinks.querySelector('a[href="#home"]');
+            homeLink.classList.remove("active");
+        }
+    });
+});
+
+// Close mobile menu when switching to desktop width
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 780) {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>
